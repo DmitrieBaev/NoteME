@@ -2,6 +2,11 @@ from model import Note, db
 from flask import redirect
 
 
+def cntl_select_notes():
+    """ Выбор всех заметок """
+    return Note.query.order_by(Note.n_date_m.desc()).all()
+
+
 def cntl_create_note(title: str, tag: str, body: str):
     """
     Создание новой заметки

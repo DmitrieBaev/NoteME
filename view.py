@@ -6,7 +6,7 @@ from flask import render_template, request
 
 @app.route('/')
 def index():
-    return render_template('index.html')
+    return render_template('index.html', notes=cntl_select_notes())
 
 
 @app.route('/create-note', methods=['POST', 'GET'])
