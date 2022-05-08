@@ -1,5 +1,4 @@
 from model import Note, db
-from flask import redirect
 
 
 def cntl_select_notes():
@@ -36,5 +35,3 @@ def cntl_create_note(title: str, tag: str, body: str):
     except Exception:
         # Добавить обработку исключений
         pass
-    finally:
-        return redirect('/')
