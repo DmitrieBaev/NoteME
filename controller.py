@@ -1,5 +1,7 @@
 from model import Note, db
 
+from datetime import datetime
+
 
 def cntl_select_notes():
     """
@@ -7,17 +9,26 @@ def cntl_select_notes():
 
     :return: Список всех заметок, отсортированный по дате модификации по убыванию
     """
-    return Note.query.order_by(Note.n_date_m.desc()).filter(Note.n_deleted == False).all()
+    return Note.query.order_by(Note.n_date_m.desc()).filter(Note.n_deleted == False, Note.n_pinned == False).all()
 
 
-def cntl_select_note(id: int):
+def cntl_select_pinned_notes():
+    """
+    Выбор всех закрепленных заметок
+
+    :return: Список всех закрепленных заметок, отсортированный по дате модификации по убыванию
+    """
+    return Note.query.order_by(Note.n_date_m.desc()).filter(Note.n_deleted == False, Note.n_pinned == True).all()
+
+
+def cntl_select_note(idx: int):
     """
     Выбор определенной заметки
 
-    :param id: Идентификатор заметки
+    :param idx: Идентификатор заметки
     :return:
     """
-    return Note.query.get(id)
+    return Note.query.get(idx)
 
 
 def cntl_create_note(title: str, tag: str, body: str):
@@ -37,9 +48,36 @@ def cntl_create_note(title: str, tag: str, body: str):
         return False
 
 
-def cntl_delete_note(title: str, tag: str, body: str):
-    pass
+def cntl_delete_note(idx: int):
+    note = cntl_select_note(idx)
+    note.n_date_m = datetime.utcnow()
+    note.n_deleted = True
+    try:
+        db.session.commit()
+        return True
+    except Exception:
+        return False
 
 
-def cntl_update_note(title: str, tag: str, body: str):
-    pass
+def cntl_update_note(idx: int, title: str, tag: str, body: str):
+    note = cntl_select_note(idx)
+    note.n_title = title
+    note.n_tag = tag
+    note.n_body = body
+    note.n_date_m = datetime.utcnow()
+    try:
+        db.session.commit()
+        return True
+    except Exception:
+        return False
+
+
+def cntl_pin_note(idx: int):
+    note = cntl_select_note(idx)
+    note.n_date_m = datetime.utcnow()
+    note.n_pinned = True
+    try:
+        db.session.commit()
+        return True
+    except Exception:
+        return False
