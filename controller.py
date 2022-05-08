@@ -3,8 +3,22 @@ from flask import redirect
 
 
 def cntl_select_notes():
-    """ Выбор всех заметок """
+    """
+    Выбор всех заметок
+
+    :return: Список всех заметок, отсортированный по дате модификации по убыванию
+    """
     return Note.query.order_by(Note.n_date_m.desc()).all()
+
+
+def cntl_select_note(id: int):
+    """
+    Выбор определенной заметки
+
+    :param id: Идентификатор заметки
+    :return:
+    """
+    return Note.query.get(id)
 
 
 def cntl_create_note(title: str, tag: str, body: str):
