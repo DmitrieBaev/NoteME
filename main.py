@@ -2,8 +2,8 @@ from flask import Flask
 
 app = Flask(__name__)
 
-from views import *
-from models import *
+from view import *
+from model import *
 
 
 if __name__ == '__main__':
