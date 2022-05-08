@@ -49,6 +49,11 @@ def cntl_create_note(title: str, tag: str, body: str):
 
 
 def cntl_delete_note(idx: int):
+    """
+    Пометить заметку на удаление
+
+    :param idx: Идентификатор заметки
+    """
     note = cntl_select_note(idx)
     note.n_date_m = datetime.utcnow()
     note.n_deleted = True
@@ -60,6 +65,14 @@ def cntl_delete_note(idx: int):
 
 
 def cntl_update_note(idx: int, title: str, tag: str, body: str):
+    """
+    Изменение заметки
+
+    :param idx: Идентификатор заметки
+    :param title: Название заметки
+    :param tag: Метка для заметки
+    :param body: Текст заметки
+    """
     note = cntl_select_note(idx)
     note.n_title = title
     note.n_tag = tag
@@ -73,9 +86,30 @@ def cntl_update_note(idx: int, title: str, tag: str, body: str):
 
 
 def cntl_pin_note(idx: int):
+    """
+    Закрепление заметки
+
+    :param idx: Идентификатор заметки
+    """
     note = cntl_select_note(idx)
     note.n_date_m = datetime.utcnow()
     note.n_pinned = True
+    try:
+        db.session.commit()
+        return True
+    except Exception:
+        return False
+
+
+def cntl_unpin_note(idx: int):
+    """
+    Открепление заметки
+
+    :param idx: Идентификатор заметки
+    """
+    note = cntl_select_note(idx)
+    note.n_date_m = datetime.utcnow()
+    note.n_pinned = False
     try:
         db.session.commit()
         return True

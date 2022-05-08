@@ -49,6 +49,15 @@ def pin_note(idx):
                                error='Не удалось закрепить заметку')
 
 
+@app.route('/note/<int:idx>/unpin')
+def pin_note(idx):
+    if cntl_unpin_note(idx):
+        redirect('/')
+    else:
+        return render_template('_fatal.html',
+                               error='Не удалось открепить заметку')
+
+
 @app.route('/create-note', methods=['POST', 'GET'])
 def create_note():
     if request.method == 'POST':
