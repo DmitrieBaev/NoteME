@@ -50,7 +50,7 @@ def pin_note(idx):
 
 
 @app.route('/note/<int:idx>/unpin')
-def pin_note(idx):
+def unpin_note(idx):
     if cntl_unpin_note(idx):
         redirect('/')
     else:
