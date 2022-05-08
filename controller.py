@@ -32,6 +32,14 @@ def cntl_create_note(title: str, tag: str, body: str):
     try:
         db.session.add(note)
         db.session.commit()
+        return True
     except Exception:
-        # Добавить обработку исключений
-        pass
+        return False
+
+
+def cntl_delete_note(title: str, tag: str, body: str):
+    pass
+
+
+def cntl_update_note(title: str, tag: str, body: str):
+    pass
