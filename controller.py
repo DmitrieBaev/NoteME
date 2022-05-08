@@ -7,7 +7,7 @@ def cntl_select_notes():
 
     :return: Список всех заметок, отсортированный по дате модификации по убыванию
     """
-    return Note.query.order_by(Note.n_date_m.desc()).all()
+    return Note.query.order_by(Note.n_date_m.desc()).filter(Note.n_deleted == False).all()
 
 
 def cntl_select_note(id: int):
