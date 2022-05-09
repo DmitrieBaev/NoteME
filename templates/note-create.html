@@ -1,5 +1,53 @@
 {% extends '_base.html' %}
 
 {% block content %}
+<div class="container">
+	<div class="py-5 text-center">
+		<svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" fill="currentColor" class="bi bi-journal-plus" viewBox="0 0 16 16">
+			<path fill-rule="evenodd" d="M8 5.5a.5.5 0 0 1 .5.5v1.5H10a.5.5 0 0 1 0 1H8.5V10a.5.5 0 0 1-1 0V8.5H6a.5.5 0 0 1 0-1h1.5V6a.5.5 0 0 1 .5-.5z"/>
+			<path d="M3 0h10a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2v-1h1v1a1 1 0 0 0 1 1h10a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H3a1 1 0 0 0-1 1v1H1V2a2 2 0 0 1 2-2z"/>
+			<path d="M1 5v-.5a.5.5 0 0 1 1 0V5h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1H1zm0 3v-.5a.5.5 0 0 1 1 0V8h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1H1zm0 3v-.5a.5.5 0 0 1 1 0v.5h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1H1z"/>
+		</svg>
+		<h2 class="mt-4 mb-4">Создание новой заметки</h2>
+		<p class="lead">Для ускорения визуальной идентификации заметки при создании следует указать к какой категории относится создаваемая заметка</br>(Просто укажите метку, изображение загрузится автоматически)</p>
+	</div>
 
+	<div class="row g-5">
+		<div class="row mt-5">
+			<form class="needs-validation" novalidate="">
+				<div class="row g-3">
+					<div class="row g-3">
+						<!-- Заголовок -->
+						<div class="col-md-6">
+							<label for="noteTitle" class="form-label">Введите заголовок заметки (до 150 символов)</label>
+							<input type="text" class="form-control" id="noteTitle" placeholder="Заголовок">
+							<div class="invalid-feedback">Введите валидный заголовок для заметки.</div>
+						</div>
+						<!-- Выбор категории -->
+						<div class="col-md-6">
+							{# Встраиваем выбор метки #}
+							{% include '_tags.html' %}
+						</div>
+						<!-- Текст заметки -->
+						<div class="col-12">
+							<label for="noteText" class="form-label">Введите текст заметки (Markdown разметка)</label>
+							<textarea class="form-control" id="noteText" rows="5">
+## Подзаголовок
+Базовые функции:
+	- **жирный**
+	- *курсив*
+	- список начинается с "-"
+	- [ ] флажок не установлен
+	- [X] флажок установлен
+							</textarea>
+							<div class="invalid-feedback">Please enter your shipping address.</div>
+						</div>
+					</div>
+				</div>
+				<input type="submit" class="w-100 btn btn-primary btn-lg my-4" value="СОЗДАТЬ">
+			</form>
+			<small class="mb-2"></small>
+		</div>
+	</div>
+</div>
 {% endblock %}
