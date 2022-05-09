@@ -14,13 +14,13 @@
 
 	<div class="row g-5">
 		<div class="row mt-5">
-			<form class="needs-validation" novalidate="">
+			<form class="needs-validation" novalidate="" method="post">
 				<div class="row g-3">
 					<div class="row g-3">
 						<!-- Заголовок -->
 						<div class="col-md-6">
 							<label for="noteTitle" class="form-label">Введите заголовок заметки (до 150 символов)</label>
-							<input type="text" class="form-control" id="noteTitle" placeholder="Заголовок">
+							<input type="text" class="form-control" name="title" id="noteTitle" placeholder="Заголовок">
 							<div class="invalid-feedback">Введите валидный заголовок для заметки.</div>
 						</div>
 						<!-- Выбор категории -->
@@ -31,15 +31,14 @@
 						<!-- Текст заметки -->
 						<div class="col-12">
 							<label for="noteText" class="form-label">Введите текст заметки (Markdown разметка)</label>
-							<textarea class="form-control" id="noteText" rows="5">
+							<textarea class="form-control" name="text" id="noteText" rows="5">
 ## Подзаголовок
 Базовые функции:
 	- **жирный**
 	- *курсив*
 	- список начинается с "-"
 	- [ ] флажок не установлен
-	- [X] флажок установлен
-							</textarea>
+	- [X] флажок установлен</textarea>
 							<div class="invalid-feedback">Please enter your shipping address.</div>
 						</div>
 					</div>
