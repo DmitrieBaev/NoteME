@@ -111,7 +111,13 @@
 
 1. Добавление заметки:
 
+<p align="right">Было:</p>
+
 ![image](https://user-images.githubusercontent.com/47382305/167490840-07490e16-658b-42d2-92b7-f0ab5c91f22e.png)
+
+<p align="right">Стало:</p>
+
+![image](https://user-images.githubusercontent.com/47382305/167492436-e3830227-cc13-4429-8584-0560f9ed76ff.png)
 
 2. Просмотр заметки:
 
