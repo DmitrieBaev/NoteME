@@ -1,0 +1,36 @@
+* {
+    padding: 0;
+    margin: 0;
+    /*
+    border: 1px solid black
+    */
+}
+
+main {
+    background-color: #f8f9fa
+}
+
+strong {
+    margin-left: 0.5rem;
+    letter-spacing: 0.1rem;
+}
+
+.card-test-sm {
+    font-size: .85rem
+}
+
+.card-tag {
+    flex: 1 1 auto;
+    padding: 0 1rem;
+    margin: 0;
+    font-style: oblique;
+}
+
+.tag-preview {
+    position: absolute;
+    top: 0; left: 0; bottom: 0; right: 0;
+}
+
+.datetime-stump {
+    font-size: .7rem
+}
