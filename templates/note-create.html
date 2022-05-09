@@ -6,22 +6,21 @@
 		<div class="row mt-5">
 			<form class="needs-validation" novalidate="" method="post">
 				<div class="row g-3">
-					<div class="row g-3">
-						<!-- Заголовок -->
-						<div class="col-md-6">
-							<label for="noteTitle" class="form-label">Введите заголовок заметки (до 150 символов)</label>
-							<input type="text" class="form-control" name="title" id="noteTitle" placeholder="Заголовок">
-							<div class="invalid-feedback">Введите валидный заголовок для заметки.</div>
-						</div>
-						<!-- Выбор категории -->
-						<div class="col-md-6">
-							{# Встраиваем выбор метки #}
-							{% include '_tags.html' %}
-						</div>
-						<!-- Текст заметки -->
-						<div class="col-12">
-							<label for="noteText" class="form-label">Введите текст заметки (Markdown разметка)</label>
-							<textarea class="form-control" name="text" id="noteText" rows="22">
+					<!-- Заголовок -->
+					<div class="col-md-6">
+						<label for="noteTitle" class="form-label">Введите заголовок заметки (до 150 символов)</label>
+						<input type="text" class="form-control" name="title" id="noteTitle" placeholder="Заголовок">
+						<div class="invalid-feedback">Введите валидный заголовок для заметки.</div>
+					</div>
+					<!-- Выбор категории -->
+					<div class="col-md-6">
+						{# Встраиваем выбор метки #}
+						{% include '_tags.html' %}
+					</div>
+					<!-- Текст заметки -->
+					<div class="col-12">
+						<label for="noteText" class="form-label">Введите текст заметки (Markdown разметка)</label>
+						<textarea class="form-control" name="text" id="noteText" rows="24">
 ## Подзаголовок
 Базовые функции:
 	- **жирный**
@@ -29,11 +28,12 @@
 	- список начинается с "-"
 	- [ ] флажок не установлен
 	- [X] флажок установлен</textarea>
-							<div class="invalid-feedback">Please enter your shipping address.</div>
-						</div>
+						<div class="invalid-feedback">Please enter your shipping address.</div>
+					</div>
+					<div class="col-12">
+						<input type="submit" class="w-100 btn btn-primary btn-lg" value="СОЗДАТЬ">
 					</div>
 				</div>
-				<input type="submit" class="w-100 btn btn-primary btn-lg my-4" value="СОЗДАТЬ">
 			</form>
 			<small class="mb-3"></small>
 		</div>
