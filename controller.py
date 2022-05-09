@@ -39,7 +39,7 @@ def cntl_create_note(title: str, tag: str, body: str):
     :param tag: Метка для заметки
     :param body: Текст заметки
     """
-    note = Note(n_title=title, n_tag=tag, n_body=body)
+    note = Note(n_title=title, n_tag=tag, n_tag_preview=f'img/tag_{tag}.jpg', n_body=body)
     try:
         db.session.add(note)
         db.session.commit()
