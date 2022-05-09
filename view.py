@@ -19,7 +19,7 @@ def show_note(idx):
 @app.route('/note/<int:idx>/delete')
 def delete_note(idx):
     if cntl_delete_note(idx):
-        redirect('/')
+        return redirect('/')
     else:
         return render_template('_fatal.html',
                                error='Не удалось изменить заметку в базе данных')
@@ -32,7 +32,7 @@ def update_note(idx):
                             title=request.form['title'],
                             tag=request.form['tag'],
                             body=request.form['text']):
-            redirect(f'/note/{idx}')
+            return redirect(f'/note/{idx}')
         else:
             return render_template('_fatal.html',
                                    error='Не удалось изменить заметку в базе данных')
@@ -43,7 +43,7 @@ def update_note(idx):
 @app.route('/note/<int:idx>/pin')
 def pin_note(idx):
     if cntl_pin_note(idx):
-        redirect('/')
+        return redirect('/')
     else:
         return render_template('_fatal.html',
                                error='Не удалось закрепить заметку')
@@ -52,7 +52,7 @@ def pin_note(idx):
 @app.route('/note/<int:idx>/unpin')
 def unpin_note(idx):
     if cntl_unpin_note(idx):
-        redirect('/')
+        return redirect('/')
     else:
         return render_template('_fatal.html',
                                error='Не удалось открепить заметку')
@@ -64,7 +64,7 @@ def create_note():
         if cntl_create_note(title=request.form['title'],
                             tag=request.form['tag'],
                             body=request.form['text']):
-            redirect('/')
+            return redirect('/')
         else:
             return render_template('_fatal.html',
                                    error='Не удалось добавить заметку в базу данных')
