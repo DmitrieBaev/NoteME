@@ -1,3 +1,15 @@
-{% block tags %}
-
-{% endblock %}
+<div class="col-12">
+	<label for="noteTag" class="form-label">Выберите категорию заметки <b>(метку)</b></label>
+	<select class="form-select" id="noteTag" required="">
+		<option value="other">Другое</option>
+		<option value="entertainment">Развлечения</option>
+		<option value="furniture">Обстановка (Фурнитура)</option>
+		<option value="gardening">Садоводство</option>
+		<option value="presents">Подарки</option>
+		<option value="purchases">Покупки</option>
+		<option value="resting">Отдых</option>
+	</select>
+	<div class="invalid-feedback">
+		Выберите валидную категорию для заметки.
+	</div>
+</div>
