@@ -4,8 +4,6 @@ from controller import *
 from flask import render_template, request, redirect
 
 
-# TODO: Шаблон FATAL
-
 @app.route('/')
 def index():
     # TODO: Шаблон главной страницы
