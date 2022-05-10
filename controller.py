@@ -3,6 +3,8 @@ from model import Note, db
 from datetime import datetime
 
 
+# TODO: В методах !create !update !select-single реализовать поддержку Markdown
+
 def cntl_select_notes():
     """
     Выбор всех заметок
@@ -62,6 +64,12 @@ def cntl_delete_note(idx: int):
         return True
     except Exception:
         return False
+
+
+def cntl_delete_notes():
+    # TODO: Физическое удаление записей из БД
+    """ Удаление помеченных заметок из БД """
+    pass
 
 
 def cntl_update_note(idx: int, title: str, tag: str, body: str):

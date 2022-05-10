@@ -4,8 +4,11 @@ from controller import *
 from flask import render_template, request, redirect
 
 
+# TODO: Шаблон FATAL
+
 @app.route('/')
 def index():
+    # TODO: Шаблон главной страницы
     return render_template('notes.html',
                            pinned_notes=cntl_select_pinned_notes(),
                            notes=cntl_select_notes())
@@ -13,6 +16,7 @@ def index():
 
 @app.route('/note/<int:idx>')
 def show_note(idx):
+    # TODO: Шаблон просмотра заметки
     return render_template('note.html', note=cntl_select_note(idx))
 
 
@@ -27,6 +31,7 @@ def delete_note(idx):
 
 @app.route('/note/<int:idx>/update', methods=['POST', 'GET'])
 def update_note(idx):
+    # TODO: Шаблон редактирования заметки
     if request.method == 'POST':
         if cntl_update_note(idx=idx,
                             title=request.form['title'],
