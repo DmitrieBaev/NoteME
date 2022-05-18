@@ -6,9 +6,34 @@ from flask import render_template, request, redirect
 
 @app.route('/')
 def index():
+    # TODO: Если пользователь не авторизирован, перенаправить на /sign-in
     return render_template('notes.html',
                            pinned_notes=cntl_select_pinned_notes(),
                            notes=cntl_select_notes())
+
+
+@app.route('/sign-in', methods=['POST', 'GET'])
+def sign_in():
+    if request.method == 'POST':
+        if cntl_sign_in():
+            return redirect('/')
+        else:
+            return render_template('_fatal.html', error='Ошибка авторизации')
+    else:
+        # TODO: Добавить шаблон авторизации
+        return render_template('sign-in.html')
+
+
+@app.route('/sign-up', methods=['POST', 'GET'])
+def sign_up():
+    if request.method == 'POST':
+        if cntl_sign_up():
+            return redirect('/')
+        else:
+            return render_template('_fatal.html', error='Ошибка регистрации')
+    else:
+        # TODO: Добавить шаблон регистрации
+        return render_template('sign-up.html')
 
 
 @app.route('/note/<int:idx>')

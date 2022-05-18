@@ -3,6 +3,18 @@ from model import Note, db
 from datetime import datetime
 
 
+def cntl_sign_in():
+    """ Авторизация """
+    # TODO: Добавить обработчик авторизации
+    return False
+
+
+def cntl_sign_up():
+    """ Регистрация """
+    # TODO: Добавить обработчик регистрации
+    return False
+
+
 def cntl_select_notes():
     """
     Выбор всех заметок
