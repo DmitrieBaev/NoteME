@@ -1,8 +1,10 @@
 from flask import Flask, url_for
 from flask_moment import Moment
+from flaskext.markdown import Markdown
 
 app = Flask(__name__)
 moment = Moment(app)
+Markdown(app)
 
 from view import *
 from model import *

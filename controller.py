@@ -3,8 +3,6 @@ from model import Note, db
 from datetime import datetime
 
 
-# TODO: В методах !create !update !select-single реализовать поддержку Markdown
-
 def cntl_select_notes():
     """
     Выбор всех заметок

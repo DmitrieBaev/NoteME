@@ -1,3 +1,4 @@
 flask >= 2.1.0
 flask-sqlalchemy >= 2.5.0
 flask-moment >= 1.0
+flask-markdown >= 0.3
