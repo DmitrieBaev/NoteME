@@ -10,3 +10,6 @@ from model import *
 
 if __name__ == '__main__':
     app.run(debug=True)
+
+    from controller import cntl_delete_notes
+    cntl_delete_notes()

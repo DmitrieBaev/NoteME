@@ -30,7 +30,7 @@ def cntl_select_note(idx: int):
     :param idx: Идентификатор заметки
     :return:
     """
-    return Note.query.get(idx)
+    return Note.query.get_or_404(idx)
 
 
 def cntl_create_note(title: str, tag: str, body: str):
@@ -67,9 +67,13 @@ def cntl_delete_note(idx: int):
 
 
 def cntl_delete_notes():
-    # TODO: Физическое удаление записей из БД
     """ Удаление помеченных заметок из БД """
-    pass
+    try:
+        to_delete = Note.query.filter(Note.n_deleted == True).all()
+        db.session.delete(to_delete)
+        db.session.commit()
+    except Exception:
+        db.session.rollback()
 
 
 def cntl_update_note(idx: int, title: str, tag: str, body: str):
