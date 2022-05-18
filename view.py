@@ -6,7 +6,6 @@ from flask import render_template, request, redirect
 
 @app.route('/')
 def index():
-    # TODO: Шаблон главной страницы
     return render_template('notes.html',
                            pinned_notes=cntl_select_pinned_notes(),
                            notes=cntl_select_notes())
