@@ -11,6 +11,23 @@ main {
     background-color: #f8f9fa
 }
 
+ul {
+    list-style: none;
+    padding: 0;
+}
+ul li {
+    padding: 0.1rem;
+    margin: 0.1rem 0;
+    border-color: #212529;
+    border-style: solid;
+    border-radius: 5px;
+    border-width: 1px 1px 1px 10px;
+    transition: 0.3s all linear;
+}
+ul li:hover {
+    border-width: 1px 10px 1px 1px;
+}
+
 strong {
     margin-left: 0.5rem;
     letter-spacing: 0.1rem;
