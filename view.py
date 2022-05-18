@@ -1,4 +1,4 @@
-from main import app
+from main import app, moment
 from controller import *
 
 from flask import render_template, request, redirect
