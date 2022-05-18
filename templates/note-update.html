@@ -8,7 +8,7 @@
 				<!-- Заголовок -->
 				<div class="col-md-6">
 					<label for="noteTitle" class="form-label">Введите заголовок заметки (до 150 символов)</label>
-					<input type="text" class="form-control" name="title" id="noteTitle" placeholder="Заголовок" value="{{ note[0].n_title }}" required="">
+					<input type="text" class="form-control" name="title" id="noteTitle" placeholder="Заголовок" value="{{ note.n_title }}" required="">
 				</div>
 				<!-- Выбор категории -->
 				<div class="col-md-6">
@@ -18,7 +18,7 @@
 				<!-- Текст заметки -->
 				<div class="col-12">
 					<label for="noteText" class="form-label">Введите текст заметки (Markdown разметка)</label>
-					<textarea class="form-control" name="text" id="noteText" rows="26" required="">{{ note[0].n_body }}</textarea>
+					<textarea class="form-control" name="text" id="noteText" rows="26" required="">{{ note.n_body }}</textarea>
 				</div>
 				<div class="col-12">
 					<input type="submit" class="w-100 btn btn-primary btn-lg" value="СОХРАНИТЬ">

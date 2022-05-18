@@ -45,7 +45,7 @@
 									</svg>
 								</a>
 							</div>
-							<small class="text-muted">moment(pinned_note.n_date_m).format('Y-m-d HH:MM')</small>
+							<small class="text-muted">{{ moment(pinned_note.n_date_m).format('LLL') }}</small>
 						</div>
 					</div>
 				</div>
@@ -96,7 +96,7 @@
 									</svg>
 								</a>
 							</div>
-							<p class="datetime-stump text-muted mb-0 mt-2">moment(note.n_date_m).format('Y-m-d HH:MM')</p>
+							<p class="datetime-stump text-muted mb-0 mt-2">{{ moment(note.n_date_m).format('LLL') }}</p>
 						</div>
 					</div>
 				</div>
