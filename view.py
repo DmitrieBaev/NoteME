@@ -28,7 +28,6 @@ def delete_note(idx):
 
 @app.route('/note/<int:idx>/update', methods=['POST', 'GET'])
 def update_note(idx):
-    # TODO: Шаблон редактирования заметки
     if request.method == 'POST':
         if cntl_update_note(idx=idx,
                             title=request.form['title'],
