@@ -13,7 +13,6 @@ def index():
 
 @app.route('/note/<int:idx>')
 def show_note(idx):
-    # TODO: Шаблон просмотра заметки
     return render_template('note.html', note=cntl_select_note(idx))
 
 
