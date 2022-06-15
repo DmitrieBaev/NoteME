@@ -15,6 +15,10 @@ SECRET_KEY = HIDDEN_SECRET_KEY
 
 DEBUG = True
 
+ROOT_URLCONF = 'NoteME.urls'
+
+WSGI_APPLICATION = 'NoteME.wsgi.application'
+
 ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
@@ -24,6 +28,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'users.apps.UsersConfig',
     'notes.apps.NotesConfig',
 ]
 
@@ -37,12 +42,10 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-ROOT_URLCONF = 'NoteME.urls'
-
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR, 'templates')],  # Подключение каталогов templates
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -54,8 +57,6 @@ TEMPLATES = [
         },
     },
 ]
-
-WSGI_APPLICATION = 'NoteME.wsgi.application'
 
 # Required psycorpg2 v2.9.3 or higher
 DATABASES = {
@@ -69,6 +70,12 @@ DATABASES = {
     }
 }
 
+DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+# AUTH settings block
+AUTH_USER_MODEL = 'users.Author'  # Новая модель пользователя
+LOGIN_REDIRECT_URL = 'index'
+LOGOUT_REDIRECT_URL = 'index'
 AUTH_PASSWORD_VALIDATORS = [
     {
         'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
@@ -100,5 +107,3 @@ STATIC_DIRS = [
 # MEDIA settings block
 MEDIA_URL = 'media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
-
-DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
