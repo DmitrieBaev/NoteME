@@ -1,4 +1,2 @@
-flask >= 2.1.0
-flask-sqlalchemy >= 2.5.0
-flask-moment >= 1.0
-flask-markdown >= 0.3
+psycopg2    == 2.9.3
+Django      == 4.0.5
