@@ -9,11 +9,11 @@ from django.views.generic.base import TemplateView
 
 
 urlpatterns = [
-    path('', TemplateView.as_view(template_name='about.html'), name='about'),
+    path('', TemplateView.as_view(template_name='about.html'), name='index'),
     path('admin/', admin.site.urls),
     path('notes/', include('notes.urls')),
     path('users/', include('users.urls')),
-    path('users/', include('django.contrib.auth.urls')),
+    # path('users/', include('django.contrib.auth.urls')),
 ]
 
 # DEBUG only url settings
