@@ -74,25 +74,7 @@ DATABASES = {
     # read os.environ['DATABASE_URL'] and raises
     # ImproperlyConfigured exception if not found.
     'default': env.db(),  # The db() method is an alias for db_url().
-
-    # read os.environ['SQLITE_URL']
-    # 'extra': env.db_url(
-    #     'SQLITE_URL',
-    #     default='sqlite:////tmp/my-tmp-sqlite.db'
-    # )
 }
-
-# # Required psycorpg2 v2.9.3 or higher
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.postgresql',
-#         'NAME': 'note_me',
-#         'USER': 'django',
-#         'PASSWORD': HIDDEN_DB_PWD,
-#         'HOST': 'localhost',
-#         'PORT': '5432',
-#     }
-# }
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
