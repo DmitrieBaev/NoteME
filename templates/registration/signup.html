@@ -1,0 +1,33 @@
+{% extends './base_sign.html' %}
+
+{% block title %}SignUp :: {% endblock %}
+
+{% block sign_title %}Создание нового профиля{% endblock %}
+{% block sign_header_text %}Добро пожаловать на {% endblock %}
+{% block sign_content %}
+
+{% if messages %}
+    {% for message in messages %}
+        {% if message.tags == 'error' %}
+            <div class="alert alert-danger text-center" role="alert"> {{ message }} </div>
+        {% else %}
+            <div class="alert alert-{{ message.tags }} text-center" role="alert"> {{ message }} </div>
+        {% endif %}
+    {% endfor %}
+{% endif  %}
+
+
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <div class="text-center">
+        <button type="submit" class="btn btn-primary">Зарегистрироваться</button>
+    </div>
+</form>
+</div> <!-- Закрываем блок .card-body -->
+<ul class="list-group list-group-flush">
+    <li class="list-group-item text-center">Уже есть аккаунт? <a href="{% url 'login' %}" class="card-link small">Войти</a>.</li>
+</ul>
+<div class="card-body">  <!-- Снова открываем блок .card-body, чтобы не поломать верстку -->
+{% endblock %}
+{% block sign_footer_text %}Нажимая кнопку 'Зарегистрироваться'<br/>Вы соглашаетесь с нашими условиями обслуживания,<br/>политикой конфиденциальности и <br/>политикой использования файлов cookie{% endblock %}
