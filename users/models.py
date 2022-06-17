@@ -12,7 +12,7 @@ class Profile(models.Model):
     
     Таблица связана с Пользователь
     """
-    user = models.OneToOneField(to=User, on_delete=models.CASCADE, primary_key=True, verbose_name="Профиль")
+    user = models.OneToOneField(to=User, on_delete=models.CASCADE, primary_key=True, verbose_name="Пользователь")
     avatar = models.ImageField(upload_to=user_dir_path, blank=True, height_field=32, width_field=32, verbose_name="Аватар")
     
     def __str__( self ):
