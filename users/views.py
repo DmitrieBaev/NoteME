@@ -36,7 +36,7 @@ def sign_in( request ):
         if form.is_valid( ):
             _user = form.get_user( )
             auth.login(request, _user)
-            messages.success(request, f'С возвращением, {_user.username}')
+            messages.success(request, f'С возвращением, <u>{_user.username}</u>!<br/>Рады Вас снова видеть!')
             return redirect('index')
         else:
             messages.error(request, 'Ошибка авторизации')

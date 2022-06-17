@@ -14,7 +14,8 @@
 </form>
 </div> <!-- Закрываем блок .card-body -->
 <ul class="list-group list-group-flush">
-    <li class="list-group-item text-center"><a href="#" class="card-link small">Забыли пароль?</a></li>
+    
+    <li class="list-group-item text-center"><a href="{% url 'change_password' %}" class="card-link small">Забыли пароль?</a></li>
 </ul>
 <div class="card-body">  <!-- Снова открываем блок .card-body, чтобы не поломать верстку -->
 {% endblock %}

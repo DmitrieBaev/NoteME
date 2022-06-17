@@ -11,14 +11,13 @@ class SignUpForm(auth_forms.UserCreationForm):
                              help_text='<small class="form-text text-muted">Убедитесь, что указываете адрес, к которому у Вас есть доступ.</small>',
                              required=True)
     password1 = forms.CharField(label='Пароль:', widget=forms.PasswordInput(attrs={ 'class': 'form-control form-control-sm' }))
-    password2 = forms.CharField(label='Подтверждение пароля:', widget=forms.PasswordInput(attrs={ 'class': 'form-control form-control-sm' }),
-                                help_text='<small class="form-text text-muted">Для подтверждения введите, пожалуйста, пароль повторно.</small>')
+    password2 = forms.CharField(label='Подтверждение пароля:', widget=forms.PasswordInput(attrs={ 'class': 'form-control form-control-sm' }))
     first_name = forms.CharField(label='Ваше имя:', widget=forms.TextInput(attrs={'class': 'form-control form-control-sm', 'autocomplete': 'off'}), required=True)
     last_name = forms.CharField(label='Ваша Фамилия:', widget=forms.TextInput(attrs={'class': 'form-control form-control-sm', 'autocomplete': 'off'}), required=True)
     
     class Meta:
         model = auth_models.User
-        fields = ('username', 'email', 'password1', 'password2', 'first_name', 'last_name')
+        fields = ('username', 'first_name', 'last_name',  'email', 'password1', 'password2')
 
 
 class SignInForm(auth_forms.AuthenticationForm):
