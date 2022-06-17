@@ -3,15 +3,15 @@ Auth URL Configuration
 """
 from django.urls import path, include
 
-from .views import SignUpView, index
+from .views import sign_up, index
 
 urlpatterns = [
         path('', index, name='index'),
         path('', include('django.contrib.auth.urls')),
-        path('signup/', SignUpView.as_view(), name='signup')
+        path('signup/', sign_up, name='signup'),
 ]
 #
-# This will include the following URL patterns:
+# path('', include('django.contrib.auth.urls')) will include the following URL patterns:
 #
 # login/                    [name='login']
 # logout/                   [name='logout']

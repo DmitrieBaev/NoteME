@@ -1,29 +1,37 @@
-from django.http import HttpResponse
-from django.urls import reverse_lazy
-from django.views.generic.edit import CreateView
-from django.contrib.auth import login, authenticate
+from django.shortcuts import render, redirect
+from django.contrib import messages, auth
 
 from .forms import SignUpForm
 
 
-class SignUpView(CreateView):
-    """ Контроллер регистрации """
+def sign_up( request ):
+    """ Регистрация пользователя с автологином """
     
-    form_class = SignUpForm
-    template_name = 'registration/signup.html'
+    if request.method == 'POST':
+        form = SignUpForm(request.POST)
+        if form.is_valid( ):
+            _user = form.save( )
+            auth.login(request, _user)
+            messages.success(request, 'Регистрация прошла успешно')
+            redirect('index')
+        else:
+            messages.error(request, 'Ошибка регистрации')
     
-    def form_valid( self, form ):
-        """ Валидация формы с автологином """
-        
-        login(self.request, authenticate(username=form.cleaned_data['username'],
-                                         password=form.cleaned_data['password1']))
-        return super( ).form_valid(form)
+    else:
+        form = SignUpForm( )
+    return render(request, 'registration/signup.html', { "form": form })
 
 
-def index(request):
+def index( request ):
+    """
+    Точка входа на сайт.
+    
+    Проверяет аутентификацию пользователя, если пользователь успешно прошел аутентификацию - перенаправить на основную страницу заметок;
+    если пользователь не прошел аутентификацию - перенаправить на страницу Авторизации
+    """
+    
     user = request.user
     if user.is_authenticated:
-        print(f'Nice2CU again, {user.username}')
+        return redirect('notes')
     else:
-        print(f'AUTHENTICATE FAILED')
-    return HttpResponse()
+        return redirect('login')
