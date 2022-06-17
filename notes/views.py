@@ -1,3 +1,4 @@
+from django.http import HttpResponse
 from django.shortcuts import render
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 
@@ -20,3 +21,12 @@ class NoteUpdate(UpdateView):
 
 class NoteDelete(DeleteView):
     pass
+
+
+def index(request):
+    user = request.user
+    if user.is_authenticated:
+        print(f'Nice2CU again, {user.username}')
+    else:
+        print(f'AUTHENTICATE FAILED')
+    return HttpResponse()
