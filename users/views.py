@@ -16,19 +16,16 @@ def sign_up( request ):
     if request.method == 'POST':
         form = SignUpForm(request.POST)
         if form.is_valid( ):
-            _user = form.save( )
-            
-            # Создание профиля пользователя
-            Profile.objects.create(user=_user)
-            
-            auth.login(request, _user)
+            _user = form.save( )  # Сохранение данных о пользователе
+            Profile.objects.create(user=_user)  # Создание профиля пользователя
+            auth.login(request, _user)  # Авторизация
             messages.success(request, 'Регистрация прошла успешно')
             return redirect('index')
         else:
             messages.error(request, 'Ошибка регистрации')
     else:
         form = SignUpForm( )
-    return render(request, 'user/signup.html', { "form": form })
+    return render(request, 'users/signup.html', { "form": form })
 
 
 def sign_in( request ):
@@ -45,7 +42,7 @@ def sign_in( request ):
             messages.error(request, 'Ошибка авторизации')
     else:
         form = SignInForm( )
-    return render(request, 'user/signin.html', { "form": form })
+    return render(request, 'users/signin.html', { "form": form })
 
 
 def sign_out( request ):
@@ -63,6 +60,6 @@ def index( request ):
     
     user = request.user
     if user.is_authenticated:
-        return redirect('notes')
+        return redirect('login')
     else:
         return redirect('login')

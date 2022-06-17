@@ -18,7 +18,12 @@
 
 <header>
     this is header
-    <span style="color: red">{{ user.username }}</span>
+    <p>
+        {% if user.is_authenticated %}
+            <span style="color: red">{{ user.username }}</span>
+            <a href="{% url 'logout' %}" class="link-dark">Выйти</a>
+        {% endif %}
+    </p>
 </header>
 
 <main class="bg-light p-5">
