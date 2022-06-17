@@ -15,16 +15,11 @@
     <span style="color: red">{{ user.username }}</span>
 </header>
 <main class="bg-light p-5">
-    {}
     {% block content %}
     {% endblock %}
 </main>
 <footer>
     this is footer
-    <p class="mt-5"></p>
-    <a href="{% url 'edit_pwd' %}" class="btn btn-warning">CHANGE PWD</a>
-    <a href="{% url 'signin' %}" class="btn btn-warning">SIGN IN</a>
-    <a href="{% url 'signup' %}" class="btn btn-warning">SIGN UP</a>
 </footer>
 <!-- Bootstrap JS & Popper -->
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.5/dist/umd/popper.min.js" integrity="sha384-Xe+8cL9oJa6tN/veChSP7q+mnSPaj5Bcu9mPX5F5xIGE0DVittaqT5lorf0EI7Vk" crossorigin="anonymous"></script>
