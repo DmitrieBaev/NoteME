@@ -21,6 +21,14 @@ class SignUpForm(auth_forms.UserCreationForm):
         fields = ('username', 'email', 'password1', 'password2', 'first_name', 'last_name')
 
 
+class SignInForm(auth_forms.AuthenticationForm):
+    """ Форма аутентификации пользователя """
+    
+    username = forms.CharField(label='Логин:', max_length=25, widget=forms.TextInput(attrs={ 'class': 'form-control form-control-sm', 'autocomplete': 'off' }),
+                               help_text='<small class="form-text text-muted">Максимум 25 символов. Допускаются только буквы, цифры и символы @.+-_</small>')
+    password = forms.CharField(label='Пароль:', widget=forms.PasswordInput(attrs={ 'class': 'form-control form-control-sm' }))
+
+
 class U4AChangeForm(auth_forms.UserChangeForm):
     """ Форма редактирования пользователя из админки """
     
