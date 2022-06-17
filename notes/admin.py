@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from .models import Note, Category
+from .models import Note, Category, Profile
 
 
 class NoteAdmin(admin.ModelAdmin):
@@ -17,5 +17,12 @@ class CategoryAdmin(admin.ModelAdmin):
     search_fields = ('title',)
 
 
+class ProfileAdmin(admin.ModelAdmin):
+    list_display = ('user', 'avatar')
+    list_display_links = ('user',)
+    search_fields = ('title',)
+
+
 admin.site.register(Note, NoteAdmin)
 admin.site.register(Category, CategoryAdmin)
+admin.site.register(Profile, ProfileAdmin)
