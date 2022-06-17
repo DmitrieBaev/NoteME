@@ -1,0 +1,18 @@
+.errorlist {
+    list-style-type: none;
+    display: flex;
+    flex-direction: column;
+    padding-left: 0;
+    margin: 0.5rem 2rem;
+    text-align: center;
+}
+
+.errorlist li {
+    text-align: -webkit-match-parent;
+    position: relative;
+    display: block;
+    text-decoration: none;
+    padding: 0.5rem auto;
+    border-bottom: 1px solid #f8d7da;
+    color: #842029;
+}
