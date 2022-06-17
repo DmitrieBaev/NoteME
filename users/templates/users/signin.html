@@ -1,0 +1,23 @@
+{% extends 'users/base_users.html' %}
+
+{% block title %}Login :: {% endblock %}
+
+{% block users_title %}Авторизация{% endblock %}
+{% block users_header_text %}{% endblock %}
+{% block users_content %}
+<form method="post">
+    {% csrf_token %}
+    {# {{ form.as_p }} #}
+    {{ form.non_field.errors }}
+    <div class="form-group mb-1">
+        <label for="{{ form.username.id_for_label }}">Имя пользователя</label>
+        <input type="text" name="username" autofocus="" autocapitalize="none" autocomplete="username" maxlength="150" required="" id="id_username" class="form-control">
+        <div class="invalid-feedback">{{ form.username.errors }}</div>
+        <label for="{{ form.password.id_for_label }}">Пароль</label>
+        <input type="password" name="password" autocomplete="current-password" required="" id="id_password" class="form-control">
+        <div class="invalid-feedback">{{ form.password.errors }}</div>
+    </div>
+    <button type="submit" class="btn btn-primary">Login</button>
+</form>
+{% endblock %}
+{% block users_footer_text %}Вы ще не зарегистрированы в нашей системе?<br/><a href="{% url 'signup' %}" class="link-primary">Станьте одним из наших пользователей прямо сейчас!</a>{% endblock %}

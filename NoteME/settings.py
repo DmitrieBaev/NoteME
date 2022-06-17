@@ -73,7 +73,6 @@ DATABASES = {
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # AUTH settings block
-AUTH_USER_MODEL = 'users.Author'  # Новая модель пользователя
 LOGIN_REDIRECT_URL = 'index'
 LOGOUT_REDIRECT_URL = 'index'
 AUTH_PASSWORD_VALIDATORS = [

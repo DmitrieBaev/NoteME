@@ -1,0 +1,15 @@
+{% extends './base_users.html' %}
+
+{% block title %}Edit :: {% endblock %}
+
+{% block users_title %}Редактирование профиля{% endblock %}
+{% block users_header_text %}Редактирование основной информации профиля пользователя{% endblock %}
+{% block users_content %}
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <input type="hidden" name="username" value="{{ user.username }}"/>
+    <button type="submit" class="btn btn-primary">Save changes</button>
+</form>
+{% endblock %}
+{% block users_footer_text %}Изменение информации длится от нескольких секунд до 5 минут, если Ваши данные не обновились в течение 3-5 минут, повторите Ваш запрос.{% endblock %}
