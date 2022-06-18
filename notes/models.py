@@ -1,20 +1,21 @@
 from django.db import models
 from django.contrib.auth.models import User
+from django.urls import reverse_lazy
 
 
 class Category(models.Model):
     """
-    Класс для таблицы Категория
+    Класс для таблицы Категория.
 
-    Таблица-справочник, хранит типы категорий заметок
-    Изменять таблицу может только админ
+    Таблица-справочник, хранит типы категорий заметок.
+    Изменять таблицу может только админ.
     """
     
     title = models.SlugField(max_length=100, db_index=True, verbose_name="Категория")
     
     def __str__( self ):
-        """ Перегрузка строкового представления класса """
-        # Необходимо для корректного взаимодействия с формой и админкой
+        """ Перегрузка строкового представления класса. """
+        # Необходимо для корректного взаимодействия с формой, админкой, выводом значений
         return self.title
     
     class Meta:
@@ -25,10 +26,10 @@ class Category(models.Model):
 
 class Note(models.Model):
     """
-    Основной класс для таблицы Заметка
+    Основной класс для таблицы Заметка.
     
-    Таблица связана с Категория и Пользователь
-    Автор видит только свои Заметки
+    Таблица связана с Категория и Пользователь.
+    Автор видит только свои Заметки.
     """
     
     title = models.CharField(max_length=150, db_index=True, verbose_name="Название")
@@ -41,7 +42,14 @@ class Note(models.Model):
     updated_at = models.DateTimeField(auto_now=True, verbose_name="Дата изменения")
     created_by = models.ForeignKey(to=User, on_delete=models.CASCADE, verbose_name="Автор")
     
+    def get_absolute_url( self ):
+        """ Ссылка на объект. """
+        
+        return reverse_lazy('note_detail', kwargs={ 'pk': self.pk })
+    
     def __str__( self ):
+        """ Перегрузка строкового представления класса. """
+        
         return self.title
     
     class Meta:
