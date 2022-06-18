@@ -1,5 +1,52 @@
+{% extends 'base.html' %}
+
+{% block title %} Create Note :: {% endblock %}
+
+{% block content %}
 <form method="post">
     {% csrf_token %}
-    {{ form.as_p }}
+    
+    <p>
+        <div class="invalid-feedback">
+            {{ form.title.errors }}
+        </div>
+        <label for="{{ form.title.id_for_label }}">Заголовок:</label>
+        {{ form.title }}
+    </p>
+    
+    <p>
+        <div class="invalid-feedback">
+            {{ form.category.errors }}
+        </div>
+        <label for="{{ form.category.id_for_label }}">Категория:</label>
+        {{ form.category }}
+    </p>
+    
+    <p>
+        <div class="invalid-feedback">
+            {{ form.body.errors }}
+        </div>
+        <label for="{{ form.body.id_for_label }}">Текст заметки (Поддерживается Markdown-разметка):</label>
+        {{ form.body }}
+    </p>
+    
+    <p>
+        <div class="invalid-feedback">
+            {{ form.preview.errors }}
+        </div>
+        <label for="{{ form.preview.id_for_label }}">Изображение-превью:</label>
+        {{ form.preview }}
+    </p>
+    
+    <p>
+        <div class="invalid-feedback">
+            {{ form.created_by.errors }}
+        </div>
+        {{ form.created_by }}
+    </p>
+    
+    
+    {{ form.non_field.errors }}
     <button type="submit" class="btn btn-primary">Сохранить</button>
 </form>
+{% endblock %}
