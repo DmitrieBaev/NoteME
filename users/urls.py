@@ -9,14 +9,14 @@ from .views import *
 urlpatterns = [
         path('', index, name='index'),
         path('signup/', sign_up, name='signup'),
-        path('login/', sign_in, name='login'),
-        path('logout/', sign_out, name='logout'),
-        path('profile/', sign_up, name='profile'),
-        path('profile/change-avatar/', sign_up, name='profile_change_avatar'),
-        path('profile/delete/', sign_up, name='delete_profile'),
-        path('change_password/', sign_up, name='change_password'),
-        path('reset_password/', sign_up, name='reset_password'),
-        path('edit/', sign_up, name='edit_user'),
+        path('signin/', sign_in, name='signin'),
+        path('signout/', sign_out, name='signout'),
+        path('profile/', profile, name='profile'),
+        path('profile/change-avatar/', change_avatar, name='profile_change_avatar'),
+        path('profile/delete/', del_profile, name='delete_profile'),
+        path('change_password/', change_pwd, name='change_password'),
+        path('reset_password/', reset_pwd, name='reset_password'),
+        path('edit/', edit_user, name='edit_user'),
 ]
 #
 # path('', include('django.contrib.auth.urls')) will include the following URL patterns:

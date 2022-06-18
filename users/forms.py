@@ -28,8 +28,13 @@ class SignInForm(auth_forms.AuthenticationForm):
     password = forms.CharField(label='Пароль:', widget=forms.PasswordInput(attrs={ 'class': 'form-control form-control-sm' }))
 
 
-class U4AChangeForm(auth_forms.UserChangeForm):
+class NamesChangeForm(auth_forms.UserChangeForm):
     """ Форма редактирования пользователя из админки """
+    
+    # Избавляемся от ошибки:
+    # Пароль не задан.
+    # Пароли хранятся в зашифрованном виде, поэтому нет возможности посмотреть пароль этого пользователя, но вы можете изменить его используя эту форму.
+    password = None
     
     first_name = forms.CharField(label='Имя пользователя:', widget=forms.TextInput(attrs={ 'class': 'form-control form-control-sm' }))
     last_name = forms.CharField(label='Фамилия пользователя:', widget=forms.TextInput(attrs={ 'class': 'form-control form-control-sm' }))

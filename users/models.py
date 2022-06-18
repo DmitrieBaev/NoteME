@@ -2,8 +2,10 @@ from django.db import models
 from django.contrib.auth.models import User
 
 
-def user_dir_path(instance, filename):
-    return 'profile/{0}/{1}'.format(instance.user.username, filename)
+def user_dir_path( instance, filename ):
+    """ Загрузка изображения на `сервер` """
+    
+    return 'profile/{0}_avatar.jpg'.format(instance.user.username)  # return 'profile/{0}/{1}'.format(instance.user.username, filename)
 
 
 class Profile(models.Model):
