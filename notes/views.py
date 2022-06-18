@@ -1,6 +1,6 @@
 from django.http import HttpResponse
 from django.shortcuts import render
-from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
+from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView, edit
 
 from .models import Note, Category
 from .forms import NoteForm
@@ -56,19 +56,20 @@ class NoteDetail(DetailView):
     context_object_name = 'note'
 
 
-class NoteCreate(CreateView):
+class NoteCreate(edit.CreateView):
     """ Контроллер создания объекта. """
     # После успешного валидирования перенаправляет на NoteDetail
     # Для работы редиректа необходим get_absolute_url в модели
     
     # self.request
     # form_class = NoteForm(user=self.request.user)
+    model = Note
     form_class = NoteForm
     template_name = 'notes/note_create.html'
 
-    # def form_valid( self, form ):
-    #     form.instance.user = self.request.user
-    #     return super(NoteCreate, self).form_valid(form)
+    def form_valid( self, form ):
+        form.instance.created_by = self.request.user
+        return super(NoteCreate, self).form_valid(form)
 
     # def get_queryset( self ):
     #     """ Переопределение запроса к БД. """
