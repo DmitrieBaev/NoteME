@@ -3,7 +3,7 @@ from django.contrib.auth import models as auth_models, forms as auth_forms
 
 
 class SignUpForm(auth_forms.UserCreationForm):
-    """ Форма регистрации пользователей """
+    """ Форма регистрации пользователей. """
     
     username = forms.CharField(label='Логин:', max_length=25, widget=forms.TextInput(attrs={ 'class': 'form-control form-control-sm', 'autocomplete': 'off' }),
                                help_text='<small class="form-text text-muted">Максимум 25 символов. Допускаются только буквы, цифры и символы @.+-_</small>')
@@ -21,7 +21,7 @@ class SignUpForm(auth_forms.UserCreationForm):
 
 
 class SignInForm(auth_forms.AuthenticationForm):
-    """ Форма аутентификации пользователя """
+    """ Форма аутентификации пользователя. """
     
     username = forms.CharField(label='Логин:', max_length=25, widget=forms.TextInput(attrs={ 'class': 'form-control form-control-sm', 'autocomplete': 'off' }),
                                help_text='<small class="form-text text-muted">Максимум 25 символов. Допускаются только буквы, цифры и символы @.+-_</small>')
@@ -29,15 +29,15 @@ class SignInForm(auth_forms.AuthenticationForm):
 
 
 class NamesChangeForm(auth_forms.UserChangeForm):
-    """ Форма редактирования пользователя из админки """
+    """ Форма редактирования пользователя. """
     
     # Избавляемся от ошибки:
     # Пароль не задан.
     # Пароли хранятся в зашифрованном виде, поэтому нет возможности посмотреть пароль этого пользователя, но вы можете изменить его используя эту форму.
     password = None
     
-    first_name = forms.CharField(label='Имя пользователя:', widget=forms.TextInput(attrs={ 'class': 'form-control form-control-sm' }))
-    last_name = forms.CharField(label='Фамилия пользователя:', widget=forms.TextInput(attrs={ 'class': 'form-control form-control-sm' }))
+    first_name = forms.CharField(label='Имя пользователя:', widget=forms.TextInput(attrs={ 'class': 'form-control form-control-sm' }), required=True)
+    last_name = forms.CharField(label='Фамилия пользователя:', widget=forms.TextInput(attrs={ 'class': 'form-control form-control-sm' }), required=True)
     
     class Meta:
         model = auth_models.User
