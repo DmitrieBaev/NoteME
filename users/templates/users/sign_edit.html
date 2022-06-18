@@ -1,0 +1,16 @@
+{% extends './base_sign.html' %}
+
+{% block title %}Edit :: {% endblock %}
+
+{% block sign_title %}Редактирование профиля{% endblock %}
+{% block sign_header_text %}{% endblock %}
+{% block sign_content %}
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <div class="text-center">
+        <button type="submit" class="btn btn-primary">Сохранить изменения</button>
+    </div>
+</form>
+{% endblock %}
+{% block sign_footer_text %}{% endblock %}

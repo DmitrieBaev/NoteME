@@ -16,33 +16,23 @@
 
 <body>
 
-<header>
-    this is header
-    <p>
-        {% if user.is_authenticated %}
-            <span style="color: red">{{ user.username }}</span>
-            <a href="{% url 'logout' %}" class="link-dark">Выйти</a>
-        {% endif %}
-    </p>
-</header>
+{% include '_header.html' %}
 
 <main class="bg-light p-5">
     {% if messages %}
-        {% for message in messages %}
-            {% if message.tags == 'error' %}
-                <div class="alert alert-danger text-center" role="alert"> {{ message | safe }} </div>
-            {% else %}
-                <div class="alert alert-{{ message.tags }} text-center" role="alert"> {{ message | safe }} </div>
-            {% endif %}
-        {% endfor %}
-    {% endif  %}
+    {% for message in messages %}
+    {% if message.tags == 'error' %}
+    <div class="alert alert-danger text-center" role="alert"> {{ message | safe }}</div>
+    {% else %}
+    <div class="alert alert-{{ message.tags }} text-center" role="alert"> {{ message | safe }}</div>
+    {% endif %}
+    {% endfor %}
+    {% endif %}
     
     {% block content %}{% endblock %}
 </main>
 
-<footer>
-    this is footer
-</footer>
+{% include '_footer.html' %}
 
 <!-- Bootstrap JS & Popper -->
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.5/dist/umd/popper.min.js" integrity="sha384-Xe+8cL9oJa6tN/veChSP7q+mnSPaj5Bcu9mPX5F5xIGE0DVittaqT5lorf0EI7Vk" crossorigin="anonymous"></script>
