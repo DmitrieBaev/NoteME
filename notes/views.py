@@ -1,5 +1,7 @@
 from django.http import HttpResponse
-from django.shortcuts import render
+from django.shortcuts import render, redirect
+from django.contrib import messages
+from django.contrib.auth.decorators import login_required
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView, edit
 
 from .models import Note, Category
@@ -66,7 +68,7 @@ class NoteCreate(edit.CreateView):
     model = Note
     form_class = NoteForm
     template_name = 'notes/note_create.html'
-
+    
     def form_valid( self, form ):
         form.instance.created_by = self.request.user
         return super(NoteCreate, self).form_valid(form)
@@ -80,11 +82,26 @@ class NoteCreate(edit.CreateView):
     #
     #     return Note.objects.filter(category=self.kwargs['category_id'],
     #                                created_by=self.request.user).select_related('category')
-
+    #
     def get_form_kwargs( self ):
         kwargs = super(NoteCreate, self).get_form_kwargs( )
         kwargs['user'] = self.request.user
         return kwargs
+
+
+@login_required
+def note_new(request):
+    if request.method == 'POST':
+        form = NoteForm(request.POST, request.FILES, user=request.user)
+        if form.is_valid( ):
+            form.save( )
+            messages.success(request, f'Данные успешно сохранены.')
+            return redirect('notes')
+        else:
+            messages.error(request, 'Не удалось изменить данные.')
+    else:
+        form = NoteForm(user=request.user)
+    return render(request, 'notes/note_create.html', { "form": form })
 
 
 class NoteUpdate(UpdateView):

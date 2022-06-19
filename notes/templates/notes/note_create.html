@@ -5,7 +5,7 @@
 {% block content %}
 <form method="post">
     {% csrf_token %}
-    
+    {{ form.non_field.errors }}
     <p>
         <div class="invalid-feedback">
             {{ form.title.errors }}
@@ -45,8 +45,6 @@
         {{ form.created_by }}
     </p>
     
-    
-    {{ form.non_field.errors }}
     <button type="submit" class="btn btn-primary">Сохранить</button>
 </form>
 {% endblock %}

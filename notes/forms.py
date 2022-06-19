@@ -41,7 +41,8 @@ class NoteForm(forms.ModelForm):
     
     class Meta:
         model = Note
-        fields = '__all__'  # ('title', 'body', 'category', 'preview')
+        # fields = '__all__'  # ('title', 'body', 'category', 'preview')
+        fields = ('title', 'category', 'body', 'preview', 'created_by')
         widgets = {
                 'title': forms.TextInput(attrs={ 'class': 'form-control form-control-sm'}),
                 'category': forms.Select(attrs={ 'class': 'form-control form-control-sm' }),
