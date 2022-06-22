@@ -1,6 +1,6 @@
 """ Инициализация приложения, подключение и регистрация необходимых модулей. """
 
-from flask import Flask, url_for
+from flask import Flask
 from flask_moment import Moment
 from flaskext.markdown import Markdown
 from flask_sqlalchemy import SQLAlchemy
