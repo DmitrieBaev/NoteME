@@ -1,6 +1,9 @@
-from model import Note, db
+""" Файл-контроллер. """
 
 from datetime import datetime
+
+from . import db
+from .model import Note, Creator, Profile, Category
 
 
 def cntl_sign_in():
