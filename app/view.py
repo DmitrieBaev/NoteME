@@ -10,20 +10,22 @@ from .forms import SignInForm
 @app.route('/index')
 def index():
     # TODO: Если пользователь не авторизирован, перенаправить на /sign-in
-    return redirect(url_for('signin'))
+    return redirect(url_for('sign_in'))
 
 
-@app.route('/signin', methods=['GET', 'POST'])
+@app.route('/sign-in', methods=['GET', 'POST'])
 def sign_in():
     # TODO: Добавить обработчик авторизации
-    return render_template('base.html')
+    return render_template('signin.html', form=SignInForm())
 
 
+@app.route('/sign-up', methods=['GET', 'POST'])
 def sign_up():
     # TODO: Добавить обработчик регистрации
     pass
 
 
+@app.route('/sign-out', methods=['GET', 'POST'])
 def sign_out():
     # TODO: Добавить обработчик logout
     pass

@@ -11,13 +11,11 @@ db = SQLAlchemy(app)
 moment = Moment(app)
 Markdown(app)
 
-# CONFIGURATION Block
-from .config import *
-
-# Load modular scheme
-from .model import *
-from .view import *
+# LOAD PACKAGES Block
+from . import config
+from . import model
+from . import view
 
 if __name__ == '__main__':
     """ Использовать при первом запуске. Создает БД на основе моделей. """
-    db.create_all()
+    model.db.create_all()
