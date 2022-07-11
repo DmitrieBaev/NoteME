@@ -26,7 +26,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
     'rest_framework',
+
     'notes.apps.NotesConfig',
     'authors.apps.AuthorsConfig',
 ]
