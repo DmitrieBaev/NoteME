@@ -3,15 +3,16 @@
 from rest_framework.viewsets import GenericViewSet
 from rest_framework.response import Response
 from rest_framework.parsers import MultiPartParser, FormParser
+from rest_framework.permissions import IsAuthenticated
 from rest_framework.mixins import (ListModelMixin,
                                    CreateModelMixin,
                                    RetrieveModelMixin,
                                    UpdateModelMixin,
                                    DestroyModelMixin)
 
-from .models import Note
+from .models import Note, Category
 from .permissions import NotesCustomPermissions
-from .serializers import NoteSerializer
+from .serializers import NoteSerializer, CategorySerializer
 
 
 class NotesViewSet(ListModelMixin,
@@ -35,3 +36,9 @@ class NotesViewSet(ListModelMixin,
                 many=True
             ).data
         )
+
+
+class CategoryReadOnlyViewSet(ListModelMixin, GenericViewSet):
+    queryset = Category.objects.all()
+    serializer_class = CategorySerializer
+    permission_classes = (IsAuthenticated,)

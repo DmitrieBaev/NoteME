@@ -1,11 +1,18 @@
 """ Custom urls for note app """
 
+from django.urls import path, include
 from rest_framework import routers
 
-from . import views as v
+from .views import NotesViewSet, CategoryReadOnlyViewSet
 
 
 noteRouter = routers.SimpleRouter()
-noteRouter.register(r'notes', v.NotesViewSet, basename='notes')
+noteRouter.register(r'notes', NotesViewSet, basename='notes')
 
-urlpatterns = noteRouter.urls
+categoryRouter = routers.SimpleRouter()
+categoryRouter.register(r'categories', CategoryReadOnlyViewSet, basename='categories')
+
+urlpatterns = [
+    path('', include(noteRouter.urls)),
+    path('', include(categoryRouter.urls)),
+]

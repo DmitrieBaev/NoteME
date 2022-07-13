@@ -2,7 +2,7 @@
 
 from rest_framework import serializers
 
-from .models import Note
+from .models import Note, Category
 
 
 class NoteSerializer(serializers.ModelSerializer):
@@ -24,3 +24,10 @@ class NoteSerializer(serializers.ModelSerializer):
                   'modified_at',
                   'created_by')
         read_only_fields = ('pk', 'modified_at')
+
+
+class CategorySerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Category
+        fields = ('pk', 'notion',)
+        read_only_fields = ('pk', 'notion',)
