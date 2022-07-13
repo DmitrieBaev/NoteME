@@ -22,3 +22,14 @@ class NoteSerializer(serializers.ModelSerializer):
                   'is_public',
                   'modified_at',
                   'created_by')
+        read_only_fields = ('pk', 'modified_at')
+
+    # def validate(self, attrs):
+    #     attrs = super().validate(attrs)
+    #     attrs['caption'] = self.context['request'].data['caption']
+    #     attrs['body'] = self.context['body']
+    #     attrs['category'] = self.context['category']
+    #     # attrs['preview'] = self.context['preview']
+    #     attrs['is_pinned'] = self.context['is_pinned']
+    #     attrs['is_public'] = self.context['is_public']
+    #     return attrs
