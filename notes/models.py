@@ -4,13 +4,17 @@ from django.contrib.auth.models import User
 from django.db import models
 
 
+def upload_to(instance, filename):
+    return f'notes/preview/{filename}'
+
+
 class Note(models.Model):
     """ Note model """
     caption = models.CharField(verbose_name='Заголовок', max_length=255, db_index=True)
     body = models.TextField(verbose_name='Текст', blank=True)
     category = models.ForeignKey('Category', verbose_name='Категория', related_name='category',
                                  on_delete=models.PROTECT)
-    # preview = models.CharField(verbose_name='Превью', max_length=255, default=None)
+    preview = models.ImageField(verbose_name='Превью', upload_to=upload_to, blank=True, null=True)
     is_pinned = models.BooleanField(verbose_name='Закреплена?', default=False)
     is_public = models.BooleanField(verbose_name='Публична?', default=False)
     modified_at = models.DateTimeField(verbose_name='Дата модификации', auto_now=True)

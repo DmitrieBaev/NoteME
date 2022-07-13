@@ -10,6 +10,7 @@ class NoteSerializer(serializers.ModelSerializer):
         read_only=True,
         default=serializers.CurrentUserDefault()
     )
+    preview = serializers.ImageField(required=False)
 
     class Meta:
         model = Note
@@ -17,7 +18,7 @@ class NoteSerializer(serializers.ModelSerializer):
                   'caption',
                   'body',
                   'category',
-                  # 'preview',
+                  'preview',
                   'is_pinned',
                   'is_public',
                   'modified_at',
