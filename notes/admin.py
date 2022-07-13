@@ -1,3 +1,5 @@
+""" Admin settings for note app """
+
 from django.contrib import admin
 
 from .models import Note, Category

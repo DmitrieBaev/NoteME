@@ -1,3 +1,5 @@
+""" Custom serializers for note app """
+
 from rest_framework import serializers
 
 from .models import Note
