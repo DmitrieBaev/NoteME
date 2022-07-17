@@ -12,9 +12,9 @@ class NoteModelTest(TestCase):
         usr = User.objects.create(username='tester',
                                   password='asdz-drqw132.qdQQWE')
         ctgry = models.Category.objects.create(notion='Testing')
-        models.Note.objects.create(caption='Test note',
-                                   category=ctgry,
-                                   created_by=usr)
+        nt = models.Note.objects.create(caption='Test note',
+                                        created_by=usr)
+        nt.category.add(ctgry)
 
     def test_note_string_representation(self):
         """ Правильное строковое представление """
@@ -29,7 +29,9 @@ class NoteModelTest(TestCase):
     def test_note_category_relationship(self):
         """ Отношение Заметка - Категория """
         note = models.Note.objects.filter(caption='Test note').first()
-        self.assertEquals(note.category.notion, 'Testing')
+        note_categories = note.category.all().first()
+        category = models.Category.objects.filter(notion='Testing').first()
+        self.assertEquals(note_categories.notion, category.notion)
 
     def test_note_user_relationship(self):
         """ Отношение Заметка - User (contrib.auth.models) """
