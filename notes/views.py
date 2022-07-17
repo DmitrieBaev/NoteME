@@ -21,7 +21,7 @@ class NotesViewSet(ListModelMixin,
                    UpdateModelMixin,
                    DestroyModelMixin,
                    GenericViewSet):
-    queryset = Note.objects.all()
+    queryset = Note.objects.all().prefetch_related('category')
     serializer_class = NoteSerializer
     permission_classes = (NotesCustomPermissions,)
     parser_classes = (MultiPartParser, FormParser)
@@ -32,7 +32,8 @@ class NotesViewSet(ListModelMixin,
         """
         return Response(
             self.get_serializer(
-                Note.objects.filter(created_by=self.request.user),
+                Note.objects.filter(created_by=self.request.user)  # Фильтруем
+                            .prefetch_related('category'),  # Подготавливаем данные из таблицы Категория
                 many=True
             ).data
         )
