@@ -1,8 +1,14 @@
-from django.urls import path
+""" Custom urls for authors app """
 
-# from . import views as v
-#
-#
-# urlpatterns = [
-#     path('', v.NoteListAPIView.as_view())
-# ]
+from django.urls import path, include
+from rest_framework import routers
+
+from .views import ProfilesViewSet
+
+
+profileRouter = routers.SimpleRouter()
+profileRouter.register(r'profiles', ProfilesViewSet, basename='profiles')
+
+urlpatterns = [
+    path('', include(profileRouter.urls)),
+]
