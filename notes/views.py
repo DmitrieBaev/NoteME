@@ -2,7 +2,7 @@
 
 from rest_framework.viewsets import GenericViewSet
 from rest_framework.response import Response
-from rest_framework.parsers import MultiPartParser, FormParser
+from rest_framework.parsers import MultiPartParser, FormParser, JSONParser
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.mixins import (ListModelMixin,
                                    CreateModelMixin,
@@ -24,7 +24,7 @@ class NotesViewSet(ListModelMixin,
     queryset = Note.objects.all().prefetch_related('category')
     serializer_class = NoteSerializer
     permission_classes = (NotesCustomPermissions,)
-    parser_classes = (MultiPartParser, FormParser)
+    parser_classes = (MultiPartParser, FormParser, JSONParser)
 
     def list(self, request, *args, **kwargs):
         """
